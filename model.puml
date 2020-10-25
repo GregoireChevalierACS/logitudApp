@@ -1,0 +1,79 @@
+@startuml logitudModel
+
+Class Epreuve {
+    -IDEpreuve:int
+    -Nom:str
+    -Lieu:str
+    -Date:DateTime
+    -ListeParticipants:object
+    +DemarrerEpreuve()
+    +CreerEpreuve()
+    +ModifierEpreuve()
+    +SupprimerEpreuve()
+    +TerminerEpreuve()
+}
+
+' Class ListeParticipants{
+'     -ID:int
+'     -NombreParticipants:int
+'     +AjouterParticiapant()
+'     +RetirerParticipant()
+'     +ExporterListe()
+'     +ImporterListe()
+' }
+
+Class Participant{
+    -IDParticipant:int
+    -NumeroDossard:int
+    -Nom:str
+    -Prénom:str
+    -DateDeNaissance:Date
+    -AdresseMail:str
+    -Profil:object
+    -Catégorie:object
+    -LienPhoto:str
+    __Temps__
+    -TempsMoyen:time
+    +CreerParticipant()
+    +ModifierParticipant()
+    +SupprimerParticipant()
+}
+
+Class Passage{
+    -IDPassage:int
+    -NumeroPassage:int
+    -TempsPassage:time
+}
+
+' Class Classement{
+'     -IDClassement:int
+'     -Epreuve:object
+'     -ListeParticipants:object
+'     -Passage:object
+'     -Classement:list
+' }
+
+Class Categorie{
+    -IDCatégorie:int
+    -Nom:str
+    +AjouterCategorie()
+    +ModifierCategorie()
+}
+
+Class Profil{
+    -IDProfil:int
+    -Nom:str
+    +AjouterProfil()
+    +ModifierProfil()
+}
+
+' Epreuve *-- ListeParticipants
+Participant "0..N" -- "1" Categorie
+Participant "0..N" -- "1" Profil
+Participant "1" *-- "0..N" Passage
+Epreuve "1" *-- "0..N" Passage
+Epreuve "1" *-- "0..N" Participant
+' ListeParticipants *-- Participant
+
+
+@enduml

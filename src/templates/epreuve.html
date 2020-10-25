@@ -1,0 +1,5 @@
+{# Épreuve se déroulant à {{ lieu }} le {{ date }}.<br> #}
+
+{% for epreuve in epreuves %}
+<br>L'épreuve du {{ epreuve.date }} se déroule à {{ epreuve.lieu }}.
+{% endfor %}
