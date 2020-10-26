@@ -2,28 +2,28 @@
 
 use function Composer\Autoload\includeFile;
 
-require_once "vendor/autoload.php";
-// include "dbconnection.php";
- include "dbinteraction.php";
+require "vendor/autoload.php";
+ 
 
-use Controller\testController;
-use Controller\EpreuvesController;
-use Controller\ParticipantsController;
+use App\Controller\AccueilController;
+use App\Controller\EpreuvesController;
+use App\Controller\ParticipantsController;
 use Symfony\Component\HttpFoundation\Request;
 
 
 echo("index.php");
-// $conn = OpenCon();
-
 
 $loader = new \Twig\Loader\FilesystemLoader('src/templates');
 $twig = new \Twig\Environment($loader);
 
-$template = $twig->load('base.html');
+$template = $twig->load('base.html.twig');
 echo $twig->render($template);
 
-$interaction = new DataBaseInteraction();
-$interaction->getEpreuves();
+// $interaction = new DataBaseInteraction();
+// $epreuves = $interaction->getEpreuves();
+
+
+//dump($epreuves);
 
 // echo $twig->render('epreuve.html', array(
 //     'lieu' => 'aix',
@@ -36,11 +36,9 @@ $interaction->getEpreuves();
 // ));
 
 
-
-
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', [new testController(), 'balanceTonEcho']);
-    $r->addRoute('GET', '/index/epreuves/', [new EpreuvesController(), 'fonction1']);
+    $r->addRoute('GET', '/', [new AccueilController(), 'fonction1']);
+    $r->addRoute('GET', '/index/epreuves', [new EpreuvesController(), 'fonction1']);
     $r->addRoute('GET', '/index/epreuves/{lieu}/{date}', [new EpreuvesController(), 'recupInfos']);
     $r->addRoute('GET', '/index/participants', [new ParticipantsController(), 'fonction1']);
     //mettre les parametres dans la route

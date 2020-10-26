@@ -1,17 +1,28 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Model\DataBaseInteraction;
 
-//include "dbconnection.php";
 
 class EpreuvesController{
 
     public function fonction1(){
         echo("<br>"."EpreuvesController.php"."<br>");
         echo("<br>"."fonction1 appelée");
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $interaction = new DataBaseInteraction();
+        $epreuves = $interaction->getEpreuves();
+    
+
+        $template = $twig->load('epreuve.html.twig');
+        echo $twig->render($template);
+
+        //dump($epreuves);
     }
 
     public function listeEpreuves(){

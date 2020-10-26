@@ -1,4 +1,8 @@
 <?php
+
+namespace App\Model;
+use \PDO;
+
 class DataBaseHandle{ 
 private $dbhost = "localhost";
 private $dbuser = "root";

@@ -82,7 +82,6 @@ class ComposerStaticInit1ff48775fb38a09015d525449e8b1677
         ),
         'C' => 
         array (
-            'Controller\\' => 11,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -222,10 +221,6 @@ class ComposerStaticInit1ff48775fb38a09015d525449e8b1677
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Controller\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/controllers',
-        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -243,6 +238,8 @@ class ComposerStaticInit1ff48775fb38a09015d525449e8b1677
         'App\\Hello' => __DIR__ . '/../..' . '/src/Hello.php',
         'App\\HighNumberException' => __DIR__ . '/../..' . '/src/HighNumberException.php',
         'App\\Lieu' => __DIR__ . '/../..' . '/src/Lieu.php',
+        'App\\Model\\DataBaseHandle' => __DIR__ . '/../..' . '/src/Model/DataBaseHandle.php',
+        'App\\Model\\DataBaseInteraction' => __DIR__ . '/../..' . '/src/Model/DataBaseInteraction.php',
         'App\\NegativeNumberException' => __DIR__ . '/../..' . '/src/NegativeNumberException.php',
         'App\\NonIntegerNumberException' => __DIR__ . '/../..' . '/src/NonIntegerNumberException.php',
         'App\\NotAStringException' => __DIR__ . '/../..' . '/src/NotAStringException.php',
@@ -326,9 +323,6 @@ class ComposerStaticInit1ff48775fb38a09015d525449e8b1677
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
-        'Controller\\EpreuvesController' => __DIR__ . '/../..' . '/src/controllers/EpreuvesController.php',
-        'Controller\\ParticipantsController' => __DIR__ . '/../..' . '/src/controllers/ParticipantsController.php',
-        'Controller\\testController' => __DIR__ . '/../..' . '/src/controllers/testController.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
