@@ -17,10 +17,11 @@ class EpreuvesController{
 
         $interaction = new DataBaseInteraction();
         $epreuves = $interaction->getEpreuves();
-    
+        
+        
 
-        $template = $twig->load('epreuve.html.twig');
-        echo $twig->render($template);
+        $template = $twig->load('epreuves.html.twig');
+        echo $template->render(['epreuves' => $epreuves]);
 
         //dump($epreuves);
     }
@@ -29,6 +30,16 @@ class EpreuvesController{
         
         echo("<br>"."listeEpreuves appelée");
        // $conn = OpenCon();
+    }
+
+    public function ajouterEpreuve(){
+
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $template = $twig->load('addEpreuve.html.twig');
+        echo $twig->render($template);
+
     }
 
     public function recupInfos(Request $request){//appel de l'objet instancié, nommage en request

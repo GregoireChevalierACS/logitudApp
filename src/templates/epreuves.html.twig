@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des épreuves{% endblock %}
+
+{% block body %}
+
+<h3>Liste des épreuves</h3>
+
+
+{% for epreuve in epreuves %}
+<br>L'épreuve du {{ epreuve.date }} se déroule à {{ epreuve.lieu }}. {{ epreuve.id }}
+{% endfor %}
+
+<br>
+<a href="http://logitud/index/ajouterEpreuve">Nouvelle épreuve</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+{% endblock %}

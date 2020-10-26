@@ -13,11 +13,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 echo("index.php");
 
-$loader = new \Twig\Loader\FilesystemLoader('src/templates');
-$twig = new \Twig\Environment($loader);
+// $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+// $twig = new \Twig\Environment($loader);
 
-$template = $twig->load('base.html.twig');
-echo $twig->render($template);
+// $template = $twig->load('base.html.twig');
+// echo $twig->render($template);
 
 // $interaction = new DataBaseInteraction();
 // $epreuves = $interaction->getEpreuves();
@@ -39,8 +39,9 @@ echo $twig->render($template);
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', [new AccueilController(), 'fonction1']);
     $r->addRoute('GET', '/index/epreuves', [new EpreuvesController(), 'fonction1']);
+    $r->addRoute('GET', '/index/ajouterEpreuve', [new EpreuvesController(), 'ajouterEpreuve']);
     $r->addRoute('GET', '/index/epreuves/{lieu}/{date}', [new EpreuvesController(), 'recupInfos']);
-    $r->addRoute('GET', '/index/participants', [new ParticipantsController(), 'fonction1']);
+    $r->addRoute('GET', '/index/epreuves/{lieu}/{date}/ajouterParticipants', [new ParticipantsController(), 'fonction1']);
     //mettre les parametres dans la route
     //récupérer les parametres (pathinfo ? -> httpfoundation)
 });
