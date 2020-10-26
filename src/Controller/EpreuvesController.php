@@ -9,27 +9,31 @@ use App\Model\DataBaseInteraction;
 
 class EpreuvesController{
 
-    public function fonction1(){
-        echo("<br>"."EpreuvesController.php"."<br>");
-        echo("<br>"."fonction1 appelée");
+    // public function fonction1(){
+    //     //echo("<br>"."EpreuvesController.php"."<br>");
+    //     //echo("<br>"."fonction1 appelée");
+    //     $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+    //     $twig = new \Twig\Environment($loader);
+
+    //     $interaction = new DataBaseInteraction();
+    //     $epreuves = $interaction->getEpreuves();
+        
+    //     $template = $twig->load('epreuves.html.twig');
+    //     echo $template->render(['epreuves' => $epreuves]);
+
+    //     //dump($epreuves);
+    // }
+
+    public function listeEpreuves(){
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
         $interaction = new DataBaseInteraction();
         $epreuves = $interaction->getEpreuves();
         
-        
-
         $template = $twig->load('epreuves.html.twig');
         echo $template->render(['epreuves' => $epreuves]);
-
-        //dump($epreuves);
-    }
-
-    public function listeEpreuves(){
-        
-        echo("<br>"."listeEpreuves appelée");
-       // $conn = OpenCon();
+        //echo("<br>"."listeEpreuves appelée");
     }
 
     public function ajouterEpreuve(){
@@ -44,14 +48,26 @@ class EpreuvesController{
 
     public function recupInfos(Request $request){//appel de l'objet instancié, nommage en request
 
-        echo("<br>"."EpreuvesController.php"."<br>");
-        echo("<br>"."recupInfos appelée"."<br>");
-        //var_dump($request->query);
+        //echo("<br>"."EpreuvesController.php"."<br>");
+        //echo("<br>"."recupInfos appelée"."<br>");
+        //dump($request->query);
         $lieu = $request->query->get('lieu');
         $date = $request->query->get('date');
+        $id = $request->query->get('id');
         $response = new Response();
-        $response->setContent("Lieu de l'épreuve : ".$lieu."<br>Date de l'épreuve : ".$date);
+        //$response->setContent("Lieu de l'épreuve : ".$lieu."<br>Date de l'épreuve : ".$date."id de l'épreuve : ".$id);
         $response->send();
+
+        $interaction = new DataBaseInteraction();
+        $epreuve = $interaction->getEpreuves();
+        
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $template = $twig->load('detailEpreuve.html.twig');
+        echo $template->render(['epreuve' => $epreuve[$id]]);
+        //dump(['epreuve' => $epreuve[$id]]);
+
         
     }
 

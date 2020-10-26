@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Épreuve de {{ epreuve.lieu }}{% endblock %}
+
+{% block body %}
+
+<h3>Épreuve de {{ epreuve.lieu }}</h3>
+
+
+{% for participants in epreuve %}
+
+<!-- <a href="http://logitud/index/epreuve/{{ epreuve.lieu }}/{{ epreuve.date }}/participant{{ participant.id }}">Voir participant</a> -->
+{% endfor %}
+
+<br>
+<a href="http://logitud/index/epreuves">Retour à la liste des épreuves</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+{% endblock %}

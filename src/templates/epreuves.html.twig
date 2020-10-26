@@ -8,7 +8,8 @@
 
 
 {% for epreuve in epreuves %}
-<br>L'épreuve du {{ epreuve.date }} se déroule à {{ epreuve.lieu }}. {{ epreuve.id }}
+<br>Épreuve du {{ epreuve.date }}, lieu : {{ epreuve.lieu }}. {{ epreuve.id }}
+<a href="http://logitud/index/epreuve/{{ epreuve.lieu }}/{{ epreuve.date }}/{{ epreuve.id }}">Voir épreuve</a>
 {% endfor %}
 
 <br>
