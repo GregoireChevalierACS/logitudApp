@@ -10,6 +10,7 @@
 {% for epreuve in epreuves %}
 <br>Épreuve du {{ epreuve.date }}, lieu : {{ epreuve.lieu }}. {{ epreuve.id }}
 <a href="http://logitud/index/epreuve/{{ epreuve.lieu }}/{{ epreuve.date }}/{{ epreuve.id }}">Voir épreuve</a>
+<a href="http://logitud/index/epreuve/{{ epreuve.lieu }}/{{ epreuve.date }}/{{ epreuve.id }}/supprimerEpreuve">Supprimer épreuve</a>
 {% endfor %}
 
 <br>

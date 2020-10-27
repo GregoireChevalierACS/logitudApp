@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer l'Épreuve de {{ epreuve.lieu }}{% endblock %}
+
+{% block body %}
+<h3>Supprimer une épreuve</h3>
+<br>
+<h4>Voulez vous supprimer l'Épreuve de {{ epreuve.lieu }}</h4>
+<h2>ATTENTION, SUPPRIMER L'ÉPREUVE EST UNE ACTION IRREVERSIBLE. ETES VOUS SUR DE VOULOIR CONTINUER?</h2>
+<a href="http://logitud/index/epreuve/{{ epreuve.lieu }}/{{ epreuve.date}}/{{ epreuve.id }}/epreuveSupprimee">Supprimer l'épreuve</a>
+<br>
+<br>
+<a href="http://logitud/index/epreuves">Annuler et retourner aux épreuves</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+{% endblock %}

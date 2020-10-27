@@ -10,7 +10,7 @@ class AccueilController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
-        $template = $twig->load('accueil.html.twig');
+        $template = $twig->load('General/accueil.html.twig');
         echo $twig->render($template);
 
     }

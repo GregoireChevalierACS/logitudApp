@@ -12,7 +12,11 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', [new AccueilController(), 'fonction1']);
     $r->addRoute('GET', '/index/epreuves', [new EpreuvesController(), 'listeEpreuves']);
     $r->addRoute('GET', '/index/ajouterEpreuve', [new EpreuvesController(), 'ajouterEpreuve']);
+    $r->addRoute('GET', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);
+   // $r->addRoute('POST', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);renvoi des données
+    $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/epreuveSupprimee', [new EpreuvesController(), 'epreuveSupprimee']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}', [new EpreuvesController(), 'recupInfos']);
+    $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/supprimerEpreuve', [new EpreuvesController(), 'supprimerEpreuve']);
     $r->addRoute('GET', '/index/epreuves/{lieu}/{date}/ajouterParticipants', [new ParticipantsController(), 'fonction1']);
   });
 
@@ -23,6 +27,7 @@ $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo(
 switch ($routeInfo[0]) {
      case FastRoute\Dispatcher::NOT_FOUND:
          //... 404 Not Found
+         dump($request);
          echo("<br>"."cas 1 ; routeInfo[0], Route not found");
          break;
      case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:

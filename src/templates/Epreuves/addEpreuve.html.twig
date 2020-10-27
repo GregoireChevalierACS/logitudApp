@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Créer une nouvelle Épreuve {{ epreuve.lieu }}{% endblock %}
+
+{% block body %}
+<h3>Ajouter une épreuve</h3>
+<br>
+<form action="http://logitud/index/ajouterEpreuve/epreuveAjoutee" method="post">
+    <div>
+        <label for="lieu">Lieu de l'épreuve :</label>
+        <input type="text" id="lieu" name="lieu">
+    </div>
+    <div>
+        <br>
+        <input type="button" value="Créer l'épreuve">
+    </div>
+</form>
+<br>
+{# <a href="http://logitud/index/ajouterEpreuve/epreuveAjoutee">Créer la nouvelle épreuve</a>
+<br> #}
+<br>
+<a href="http://logitud/index/epreuves">Retour aux épreuves</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+{% endblock %}
