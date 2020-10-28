@@ -17,7 +17,9 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/epreuveSupprimee', [new EpreuvesController(), 'epreuveSupprimee']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}', [new EpreuvesController(), 'recupInfos']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/supprimerEpreuve', [new EpreuvesController(), 'supprimerEpreuve']);
-    $r->addRoute('GET', '/index/epreuves/{lieu}/{date}/ajouterParticipants', [new ParticipantsController(), 'fonction1']);
+    $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/ajoutParticipant', [new ParticipantsController(), 'ajouterParticipant']);
+    $r->addRoute('POST', '/index/epreuve/{lieu}/{date}/{id}/participantAjoute', [new ParticipantsController(), 'participantAjoute']);
+    $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/participantAjoute', [new ParticipantsController(), 'participantAjoute']);
   });
 
 $request = Request::createFromGlobals(); // instancie l'objet request

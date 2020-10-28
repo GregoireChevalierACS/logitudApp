@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter un nouveau participant {% endblock %}
+
+{% block body %}
+<h3>Ajouter un nouveau participant </h3>
+<br>
+<form action="http://logitud/index/epreuve/{{ epreuve.lieu }}/{{ epreuve.date }}/{{ epreuve.id }}/participantAjoute" method="post">
+    <div>
+        <label for="prenom">Prénom du participant :</label>
+        <input type="text" id="prenom" name="prenom">
+    </div>
+        <br>
+    <div>
+        <label for="nom">Nom du participant :</label>
+        <input type="text" id="nom" name="nom">
+    </div>
+    <div>
+        <br>
+        
+        <input type="submit" value="Valider le participant">
+
+    </div>
+</form>
+<br>
+{# <a href="http://logitud/index/ajouterEpreuve/epreuveAjoutee">Créer la nouvelle épreuve</a>
+<br> #}
+<br>
+<a href="http://logitud/index/epreuves">Retour aux épreuves</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+{% endblock %}

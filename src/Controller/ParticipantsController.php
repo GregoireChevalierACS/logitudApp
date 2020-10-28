@@ -2,16 +2,43 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use App\Model\DataBaseInteraction;
 
 class ParticipantsController{
 
-    public function fonction1(){
-        echo("<br>"."ParticipantsController.php"."<br>");
-        echo("<br>"."fonction1 appelée"."<br>");
+    public function ajouterParticipant(Request $request){
         
-//         $name = isset($_GET['name']) ? $_GET['name'] : 'World';
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+//
+        $interaction = new DataBaseInteraction();
+        $epreuve = $interaction->getEpreuves();
+        $val = array_column($epreuve, null, 'id');
+        $id = $request->query->get('id');
+        
+        $template = $twig->load('Participants/addParticipant.html.twig');
+        echo $template->render(['epreuve' => $val[$id]]);
 
-// printf('Hello %s', $name);
+    }
+
+    public function participantAjoute(Request $request){
+        echo("<br>"."participantAjoute appelée");
+        $prenom = $request->get('prenom');
+        $nom = $request->get('nom');
+
+        // $interaction = new DataBaseInteraction();
+        // $interaction->setParticipants($prenom, $nom);
+        $interaction = new DataBaseInteraction();
+        $epreuve = $interaction->getEpreuves();
+        $val = array_column($epreuve, null, 'id');
+        $id = $request->query->get('id');
+
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $template = $twig->load('Participants/participantAjoute.html.twig');
+        echo $template->render(['epreuve' => $val[$id]]);
     }
 
 }
