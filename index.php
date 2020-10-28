@@ -13,7 +13,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/index/epreuves', [new EpreuvesController(), 'listeEpreuves']);
     $r->addRoute('GET', '/index/ajouterEpreuve', [new EpreuvesController(), 'ajouterEpreuve']);
     $r->addRoute('GET', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);
-   // $r->addRoute('POST', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);renvoi des données
+    $r->addRoute('POST', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/epreuveSupprimee', [new EpreuvesController(), 'epreuveSupprimee']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}', [new EpreuvesController(), 'recupInfos']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/supprimerEpreuve', [new EpreuvesController(), 'supprimerEpreuve']);

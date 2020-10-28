@@ -51,7 +51,8 @@ class EpreuvesController{
         
         $interaction = new DataBaseInteraction();
         //$nouvelleEpreuve = $interaction->setEpreuves("Mont-Cul", "2020-12-12");
-        $interaction->setEpreuves("Mont-Cul", "2020-12-12"); // remplacer par un form
+        //$interaction->setEpreuves("Mont-Cul", "2020-12-12"); // remplacer par un form
+        die();
 
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
