@@ -46,9 +46,9 @@ class EpreuvesController{
 
     }
 
-    public function epreuveAjoutee(){
+    public function epreuveAjoutee(Request $request){
         echo("<br>"."epreuveAjoutee appelée");
-        
+        dump($request);
         $interaction = new DataBaseInteraction();
         //$nouvelleEpreuve = $interaction->setEpreuves("Mont-Cul", "2020-12-12");
         //$interaction->setEpreuves("Mont-Cul", "2020-12-12"); // remplacer par un form
