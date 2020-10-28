@@ -48,12 +48,16 @@ class EpreuvesController{
 
     public function epreuveAjoutee(Request $request){
         echo("<br>"."epreuveAjoutee appelée");
-        dump($request);
+        $lieu = $request->get('lieu');
+        $date = $request->get('date');
+        // dump($lieu);
+        // die();
+
         $interaction = new DataBaseInteraction();
+        $interaction->setEpreuves($lieu, $date);
+
         //$nouvelleEpreuve = $interaction->setEpreuves("Mont-Cul", "2020-12-12");
         //$interaction->setEpreuves("Mont-Cul", "2020-12-12"); // remplacer par un form
-        die();
-
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
