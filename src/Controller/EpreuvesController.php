@@ -40,7 +40,7 @@ class EpreuvesController{
 
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
-
+//
         $template = $twig->load('Epreuves/addEpreuve.html.twig');
         echo $twig->render($template);
 

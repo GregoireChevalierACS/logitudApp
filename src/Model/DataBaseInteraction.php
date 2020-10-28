@@ -9,7 +9,7 @@ class DataBaseInteraction extends DataBaseHandle{
         $sql = "SELECT * FROM epreuves";
         $declaration = $this->connecte()->query($sql);
         $one = $declaration->fetchAll();
-        //dump($one)  ; 
+        //dump($one)  ; 2
         return $one;
     }
 
