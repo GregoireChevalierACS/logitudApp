@@ -21,11 +21,18 @@ class DataBaseInteraction extends DataBaseHandle{
     }
 
     public function deleteEpreuve($id){
-
+        
         $sql = "DELETE FROM `epreuves` WHERE `epreuves`.`id` = $id ";
         $declaration = $this->connecte()->prepare($sql);
         $declaration->execute([$id]);
 
+    }
+
+    public function setParticipants($prenom, $nom){
+        //echo("setParticipants() appelée" . "<br>");
+        $sql = "INSERT INTO participants(prenom, nom) VALUES (?,?)";
+        $declaration = $this->connecte()->prepare($sql);
+        $declaration->execute([$prenom, $nom]);
     }
 
 }
