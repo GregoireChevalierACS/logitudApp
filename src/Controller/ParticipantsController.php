@@ -52,7 +52,7 @@ class ParticipantsController{
 
         $interaction = new DataBaseInteraction();
         $participants = $interaction->getParticipants();
-        
+        //lier table epreuves avec participants et participants avec passages
         $template = $twig->load('Participants/participants.html.twig');
         echo $template->render(['participants' => $participants]);
     }
