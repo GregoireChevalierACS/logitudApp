@@ -35,4 +35,10 @@ class DataBaseInteraction extends DataBaseHandle{
         $declaration->execute([$prenom, $nom, $dateNaissance, $categorie, $profil]);
     }
 
+    public function getParticipants(){
+        $sql = "SELECT * FROM participants";
+        $declaration = $this->connecte()->query($sql);
+        $two = $declaration->fetchAll();
+        return $two;
+    }
 }

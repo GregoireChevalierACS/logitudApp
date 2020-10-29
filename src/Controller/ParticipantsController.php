@@ -46,4 +46,14 @@ class ParticipantsController{
         echo $template->render(['epreuve' => $val[$id]]);
     }
 
+    public function listeParticipants(){
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $interaction = new DataBaseInteraction();
+        $participants = $interaction->getParticipants();
+        
+        $template = $twig->load('Participants/participants.html.twig');
+        echo $template->render(['participants' => $participants]);
+    }
 }
