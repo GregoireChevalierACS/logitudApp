@@ -26,13 +26,16 @@ class ParticipantsController{
         echo("<br>"."participantAjoute appelée");
         $prenom = $request->get('prenom');
         $nom = $request->get('nom');
+        $dateNaissance = $request->get('dateNaissance');
+        $categorie = $request->get('categorie');
+        $profil = $request->get('profil');
         // dump($request);
         // die();
 
         $interaction = new DataBaseInteraction();
         $epreuve = $interaction->getEpreuves();
         $interaction2 = new DataBaseInteraction();
-        $interaction2->setParticipants($prenom, $nom);
+        $interaction2->setParticipants($prenom, $nom, $dateNaissance, $categorie, $profil);
         $val = array_column($epreuve, null, 'id');
         $id = $request->query->get('id');
 

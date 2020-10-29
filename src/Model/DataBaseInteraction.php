@@ -28,11 +28,11 @@ class DataBaseInteraction extends DataBaseHandle{
 
     }
 
-    public function setParticipants($prenom, $nom){
+    public function setParticipants($prenom, $nom, $dateNaissance, $categorie, $profil){
         //echo("setParticipants() appelée" . "<br>");
-        $sql = "INSERT INTO participants(prenom, nom) VALUES (?,?)";
+        $sql = "INSERT INTO participants(prenom, nom, dateNaissance, categorie, profil) VALUES (?,?,?,?,?)";
         $declaration = $this->connecte()->prepare($sql);
-        $declaration->execute([$prenom, $nom]);
+        $declaration->execute([$prenom, $nom, $dateNaissance, $categorie, $profil]);
     }
 
 }
