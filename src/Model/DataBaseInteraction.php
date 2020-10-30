@@ -58,11 +58,15 @@ class DataBaseInteraction extends DataBaseHandle{
         $declaration = $this->connecte()->query($sql);
         $three = $declaration->fetchAll();
        
-        for($i = 0; $i < $three; $i++) {
-            $exportCSV.= $three[$i['prenom']] . ' - ' . $three[$i['nom']] . '\n';
-          }
+        // for($i = 0; $i < $three; $i++) {
+        //     $exportCSV.= $three[$i['prenom']] . ' - ' . $three[$i['nom']] . '\n';
+        //   }
+        
+        for ($i=0; $i < count($three); $i++) { 
+            dump($three[$i]);
+        }
 
-        echo($exportCSV);
+        //echo($exportCSV);
         dump($three);
         die();
         // $exportCSV = '';
