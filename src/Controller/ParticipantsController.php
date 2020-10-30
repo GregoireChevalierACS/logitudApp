@@ -61,8 +61,8 @@ class ParticipantsController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
-        //$interaction = new DataBaseInteraction();
-        //$participants = $interaction->getParticipants();
+        $interaction = new DataBaseInteraction();
+        $interaction->exporteParticipants();
         
         $template = $twig->load('General/export.html.twig');
         echo $twig->render($template);

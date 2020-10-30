@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use App\Participant;
+
 class DataBaseInteraction extends DataBaseHandle{ 
 
     public function getEpreuves(){
@@ -40,5 +42,22 @@ class DataBaseInteraction extends DataBaseHandle{
         $declaration = $this->connecte()->query($sql);
         $two = $declaration->fetchAll();
         return $two;
+    }
+
+    public function exporteParticipants(){
+        $exportCible = 'participants';
+        $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
+        $sql = "SELECT prenom, nom, dateNaissance, categorie, profil, temps1, temps2
+        FROM participants
+        INTO OUTFILE 'C:\wamp64\www\w_projet_01_logitud\logitudApp\exports\participants.csv'
+        FIELDS TERMINATED BY ','
+        ENCLOSED BY ''
+        LINES TERMINATED BY '\n'";
+        $declaration = $this->connecte()->query($sql);
+        return $declaration;
+        // $three = $declaration->fetchAll();
+        // $exportCSV = '';
+        // dump($three);
+        // die();
     }
 }
