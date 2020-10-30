@@ -53,9 +53,6 @@ class DataBaseInteraction extends DataBaseHandle{
     }
 
     public function exporteParticipants(){
-        $exportCible = 'participants';
-        $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
-        $exportCSV = '';
         // $sql = "SELECT prenom, nom, dateNaissance, categorie, profil, temps1, temps2
         // FROM participants
         // INTO OUTFILE 'C:\wamp64\www\w_projet_01_logitud\logitudApp\exports\participants.csv'
@@ -65,7 +62,14 @@ class DataBaseInteraction extends DataBaseHandle{
         $sql = "SELECT * FROM participants";
         $declaration = $this->connecte()->query($sql);
         $three = $declaration->fetchAll();
+        $exportCible = 'participants';
+        // $field = mysqli_num_fields($three);
+        $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
+        $exportCSV = '';
        
+        // dump($field);
+        // die();
+
         // for($i = 0; $i < $three; $i++) {
         //     $exportCSV.= $three[$i['prenom']] . ' - ' . $three[$i['nom']] . '\n';
         //   }
