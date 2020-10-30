@@ -44,6 +44,14 @@ class DataBaseInteraction extends DataBaseHandle{
         return $two;
     }
 
+    public function deleteParticipant($id){
+        
+        $sql = "DELETE FROM `participants` WHERE `participants`.`id` = $id ";
+        $declaration = $this->connecte()->prepare($sql);
+        $declaration->execute([$id]);
+
+    }
+
     public function exporteParticipants(){
         $exportCible = 'participants';
         $nomCSV = 'db_export_'.date('Y-m-d').'.csv';

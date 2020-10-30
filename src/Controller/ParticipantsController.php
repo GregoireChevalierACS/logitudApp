@@ -57,6 +57,36 @@ class ParticipantsController{
         echo $template->render(['participants' => $participants]);
     }
 
+    public function supprimerParticipant(Request $request){
+        
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+//
+        $interaction = new DataBaseInteraction();
+        $participants = $interaction->getParticipants();
+        $val = array_column($participants, null, 'id');
+        $id = $request->query->get('id');
+        
+        $template = $twig->load('Participants/supprimerParticipant.html.twig');
+        echo $template->render(['participants' => $val[$id]]);
+
+    }
+
+    public function participantSupprime(Request $request){
+
+        $id = $request->query->get('id');
+        $interaction = new DataBaseInteraction();
+        $participants = $interaction->getParticipants();
+        $interaction->deleteParticipant($id);
+        $val = array_column($participants, null, 'id');
+        
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $template = $twig->load('Participants/participantSupprime.html.twig');
+        echo $template->render(['participants' => $val[$id]]);
+    }
+
     public function export(){
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);

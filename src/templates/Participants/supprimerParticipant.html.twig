@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer le participant {{ participants.prenom }} {{ participants.nom }}{% endblock %}
+
+{% block body %}
+<h3>Supprimer un participant</h3>
+<br>
+<h4>Voulez vous supprimer le participant {{ participants.prenom }} {{ participants.nom }}</h4>
+<h2>ATTENTION, SUPPRIMER LE PARTICIPANT EST UNE ACTION IRREVERSIBLE. ETES VOUS SUR DE VOULOIR CONTINUER?</h2>
+<a href="http://logitud/index/participant{{ participants.id }}/participantSupprime">Supprimer le participant</a>
+<br>
+<br>
+<a href="http://logitud/index/participants">Annuler et retourner aux participants</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+{% endblock %}

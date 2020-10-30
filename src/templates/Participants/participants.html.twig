@@ -10,6 +10,8 @@
 {% for participant in participants %}
 {{ participant.prenom }} {{ participant.nom }} - {{ participant.dateNaissance }} - {{ participant.categorie }} - {{ participant.profil }}
 <br>
+<a href="http://logitud/index/participant{{ participant.id }}/supprimerParticipant">Supprimer ce participant</a>
+<br>
 {% endfor %}
 
 <br>

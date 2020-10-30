@@ -14,11 +14,13 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/index/ajouterEpreuve', [new EpreuvesController(), 'ajouterEpreuve']);
     $r->addRoute('GET', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);
     $r->addRoute('POST', '/index/ajouterEpreuve/epreuveAjoutee', [new EpreuvesController(), 'epreuveAjoutee']);
+    $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/supprimerEpreuve', [new EpreuvesController(), 'supprimerEpreuve']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/epreuveSupprimee', [new EpreuvesController(), 'epreuveSupprimee']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}', [new EpreuvesController(), 'recupInfos']);
     $r->addRoute('GET', '/index/participants', [new ParticipantsController(), 'listeParticipants']);
+    $r->addRoute('GET', '/index/participant{id}/supprimerParticipant', [new ParticipantsController(), 'supprimerParticipant']);
+    $r->addRoute('GET', '/index/participant{id}/participantSupprime', [new ParticipantsController(), 'participantSupprime']);
     $r->addRoute('GET', '/index/export', [new ParticipantsController(), 'export']);
-    $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/supprimerEpreuve', [new EpreuvesController(), 'supprimerEpreuve']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/ajoutParticipant', [new ParticipantsController(), 'ajouterParticipant']);
     $r->addRoute('POST', '/index/epreuve/{lieu}/{date}/{id}/participantAjoute', [new ParticipantsController(), 'participantAjoute']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/participantAjoute', [new ParticipantsController(), 'participantAjoute']);
