@@ -47,17 +47,25 @@ class DataBaseInteraction extends DataBaseHandle{
     public function exporteParticipants(){
         $exportCible = 'participants';
         $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
-        $sql = "SELECT prenom, nom, dateNaissance, categorie, profil, temps1, temps2
-        FROM participants
-        INTO OUTFILE 'C:\wamp64\www\w_projet_01_logitud\logitudApp\exports\participants.csv'
-        FIELDS TERMINATED BY ','
-        ENCLOSED BY ''
-        LINES TERMINATED BY '\n'";
+        $exportCSV = '';
+        // $sql = "SELECT prenom, nom, dateNaissance, categorie, profil, temps1, temps2
+        // FROM participants
+        // INTO OUTFILE 'C:\wamp64\www\w_projet_01_logitud\logitudApp\exports\participants.csv'
+        // FIELDS TERMINATED BY ','
+        // ENCLOSED BY ''
+        // LINES TERMINATED BY '\n'";
+        $sql = "SELECT * FROM participants";
         $declaration = $this->connecte()->query($sql);
-        return $declaration;
-        // $three = $declaration->fetchAll();
+        $three = $declaration->fetchAll();
+       
+        for($i = 0; $i < $three; $i++) {
+            $exportCSV.= $three[$i['prenom']] . ' - ' . $three[$i['nom']] . '\n';
+          }
+
+        echo($exportCSV);
+        dump($three);
+        die();
         // $exportCSV = '';
-        // dump($three);
-        // die();
+        
     }
 }
