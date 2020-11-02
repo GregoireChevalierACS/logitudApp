@@ -111,17 +111,12 @@ class EpreuvesController{
         // foreach($epreuve as $arr) foreach($arr as $k=>$v) $arrayIndex[$k][] = $v; VERSION PLUS PROPRE DE çA CI-DESSOUS
         // $val = array_search($id, $arrayIndex['id']);
         $val = array_column($epreuve, null, 'id');
-        //dump($val[$id]);
 
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
         $template = $twig->load('Epreuves/detailEpreuve.html.twig');
         echo $template->render(['epreuve' => $val[$id]]);
-        
-        //dump(['epreuve' => $epreuve[$date]]);
-
-        
     }  
     
     public function export(){

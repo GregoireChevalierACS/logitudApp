@@ -14,6 +14,9 @@ class ParticipantsInteraction extends DataBaseHandle{
 
     public function getParticipants(){
         $sql = "SELECT * FROM participants";
+        //      $sql   = 'SELECT database1.table1.name FROM database1.table1 LEFT JOIN database2.table2
+        //            ON database1.table1.userid = database2.table2.userid';
+        //  $result = $pdo***->query($sql);   
         $declaration = $this->connecte()->query($sql);
         $two = $declaration->fetchAll();
         return $two;
