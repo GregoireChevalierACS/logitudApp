@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use App\Model\DataBaseInteraction;
+use App\Model\EpreuvesInteraction;
+use App\Model\ParticipantsInteraction;
 
 class ParticipantsController{
 
@@ -12,7 +13,7 @@ class ParticipantsController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 //
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $epreuve = $interaction->getEpreuves();
         $val = array_column($epreuve, null, 'id');
         $id = $request->query->get('id');
@@ -32,9 +33,9 @@ class ParticipantsController{
         // dump($request);
         // die();
 
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $epreuve = $interaction->getEpreuves();
-        $interaction2 = new DataBaseInteraction();
+        $interaction2 = new ParticipantsInteraction();
         $interaction2->setParticipants($prenom, $nom, $dateNaissance, $categorie, $profil);
         $val = array_column($epreuve, null, 'id');
         $id = $request->query->get('id');
@@ -50,7 +51,7 @@ class ParticipantsController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
-        $interaction = new DataBaseInteraction();
+        $interaction = new ParticipantsInteraction();
         $participants = $interaction->getParticipants();
         //lier table epreuves avec participants et participants avec passages
         $template = $twig->load('Participants/participants.html.twig');
@@ -62,7 +63,7 @@ class ParticipantsController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 //
-        $interaction = new DataBaseInteraction();
+        $interaction = new ParticipantsInteraction();
         $participants = $interaction->getParticipants();
         $val = array_column($participants, null, 'id');
         $id = $request->query->get('id');
@@ -75,7 +76,7 @@ class ParticipantsController{
     public function participantSupprime(Request $request){
 
         $id = $request->query->get('id');
-        $interaction = new DataBaseInteraction();
+        $interaction = new ParticipantsInteraction();
         $participants = $interaction->getParticipants();
         $interaction->deleteParticipant($id);
         $val = array_column($participants, null, 'id');
@@ -91,7 +92,7 @@ class ParticipantsController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
-        $interaction = new DataBaseInteraction();
+        $interaction = new ParticipantsInteraction();
         $interaction->exporteParticipants();
         
         $template = $twig->load('General/export.html.twig');

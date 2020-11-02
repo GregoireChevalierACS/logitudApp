@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Model\DataBaseInteraction;
+use App\Model\EpreuvesInteraction;
 
 
 class EpreuvesController{
@@ -28,7 +28,7 @@ class EpreuvesController{
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
 
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $epreuves = $interaction->getEpreuves();
         
         $template = $twig->load('Epreuves/epreuves.html.twig');
@@ -53,7 +53,7 @@ class EpreuvesController{
         // dump($lieu);
         // die();
 
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $interaction->setEpreuves($lieu, $date);
 
         //$nouvelleEpreuve = $interaction->setEpreuves("Mont-Cul", "2020-12-12");
@@ -67,7 +67,7 @@ class EpreuvesController{
     
     public function supprimerEpreuve(Request $request){
         
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $epreuve = $interaction->getEpreuves();
 
         $val = array_column($epreuve, null, 'id');
@@ -85,10 +85,8 @@ class EpreuvesController{
         echo("<br>"."epreuveSupprimee appelée");
 
         $id = $request->query->get('id');
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $interaction->deleteEpreuve($id);
-        // dump($id);
-        // die();
         
         $loader = new \Twig\Loader\FilesystemLoader('src/templates');
         $twig = new \Twig\Environment($loader);
@@ -109,7 +107,7 @@ class EpreuvesController{
         //$response->setContent("Lieu de l'épreuve : ".$lieu."<br>Date de l'épreuve : ".$date."id de l'épreuve : ".$id);
         //$response->send();
 
-        $interaction = new DataBaseInteraction();
+        $interaction = new EpreuvesInteraction();
         $epreuve = $interaction->getEpreuves();
         
         // foreach($epreuve as $arr) foreach($arr as $k=>$v) $arrayIndex[$k][] = $v; VERSION PLUS PROPRE DE çA CI-DESSOUS
@@ -128,14 +126,17 @@ class EpreuvesController{
         //dump(['epreuve' => $epreuve[$date]]);
 
         
+    }  
+    
+    public function export(){
+        $loader = new \Twig\Loader\FilesystemLoader('src/templates');
+        $twig = new \Twig\Environment($loader);
+
+        $interaction = new EpreuvesInteraction();
+        $interaction->exporteEpreuves();
+        
+        $template = $twig->load('General/export.html.twig');
+        echo $twig->render($template);
     }
 
 }
-//integrer objet request dans controller
-//integration de twig.
-//linker la bdd ? ou tableau de données en php
-
-//1 : créer une page accueil avec bouton ajouter epreuve
-//2 : créer une page ajouter epreuve avec chhamp lieu date
-//3 : bdd epreuve
-//({% for key,value in donnees[0] %})

@@ -17,6 +17,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/supprimerEpreuve', [new EpreuvesController(), 'supprimerEpreuve']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/epreuveSupprimee', [new EpreuvesController(), 'epreuveSupprimee']);
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}', [new EpreuvesController(), 'recupInfos']);
+    $r->addRoute('GET', '/index/epreuves/export', [new EpreuvesController(), 'export']);
     $r->addRoute('GET', '/index/participants', [new ParticipantsController(), 'listeParticipants']);
     $r->addRoute('GET', '/index/participant{id}/supprimerParticipant', [new ParticipantsController(), 'supprimerParticipant']);
     $r->addRoute('GET', '/index/participant{id}/participantSupprime', [new ParticipantsController(), 'participantSupprime']);
