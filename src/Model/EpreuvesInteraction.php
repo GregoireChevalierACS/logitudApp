@@ -51,7 +51,7 @@ class EpreuvesInteraction extends DataBaseHandle{
         header('Content-Type: application/excel');
         header('Content-Disposition: attachment; filename="' . $exportCSV . '"');
 
-        $fp = fopen('php://output', 'w');
+        $fp = fopen('php://output', 'w', "w");
         fputcsv($fp, $nomChamps);
 
         foreach ($epreuve as $row) {
@@ -60,4 +60,5 @@ class EpreuvesInteraction extends DataBaseHandle{
 
         fclose($fp);
     }
+
 }

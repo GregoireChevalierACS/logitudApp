@@ -54,7 +54,9 @@ class ParticipantsInteraction extends DataBaseHandle{
         header('Content-Type: application/excel');
         header('Content-Disposition: attachment; filename="' . $exportCSV . '"');
 
-        $fp = fopen('php://output', 'w');
+        ob_end_clean();
+        
+        $fp = fopen('php://output', 'w', "w");
         fputcsv($fp, $nomChamps);
 
         foreach ($participant as $row) {
@@ -63,6 +65,7 @@ class ParticipantsInteraction extends DataBaseHandle{
 
         fclose($fp);
 
+        exit();
         // dump($nomChamps[1]);
         // die();
         }

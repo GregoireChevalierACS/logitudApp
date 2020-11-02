@@ -2,3 +2,4 @@ Visualisation et recherches de ce week end : application de la methode PDO pour 
 Lier deux tables de données entre elles : https://stackoverflow.com/questions/11426929/can-we-use-join-for-two-different-database-tables
                                           https://stackoverflow.com/questions/29053648/how-to-run-a-query-with-a-join-accross-two-databases-with-pdo
                                           https://www.php.net/manual/fr/sdodasrel.examples.two-table.php
+Pourquoi mon csv exporte du code html ? : https://stackoverflow.com/questions/13316293/my-csv-export-displaying-html-how-to-get-rid-of

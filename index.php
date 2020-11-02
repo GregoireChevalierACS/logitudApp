@@ -7,6 +7,7 @@ use App\Controller\EpreuvesController;
 use App\Controller\ParticipantsController;
 use Symfony\Component\HttpFoundation\Request;
 
+
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', [new AccueilController(), 'fonction1']);
     $r->addRoute('GET', '/index/epreuves', [new EpreuvesController(), 'listeEpreuves']);
@@ -26,9 +27,12 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/index/epreuve/{lieu}/{date}/{id}/participantAjoute', [new ParticipantsController(), 'participantAjoute']);
   });
 
+
 $request = Request::createFromGlobals(); // instancie l'objet request
 
+
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPathInfo()); // définit l'objet request
+
 
 switch ($routeInfo[0]) {
      case FastRoute\Dispatcher::NOT_FOUND:

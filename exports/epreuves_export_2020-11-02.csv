@@ -1,0 +1,29 @@
+id,lieu,date
+1,Mont-Blanc,2020-10-30
+2,"Val Thorens",2020-11-01
+3,"Les Menuires",2020-11-11
+4,"Chez ton pere",2020-11-19
+13,Mont-Cul,2020-12-12
+16,"Station du Lac Blanc",2020-10-29
+17,Mulhouse,2020-12-15
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Logitud App - Export effectué !</title>
+    </head>
+<body>
+    
+        <img src="../../visuels/logitud-1.png" alt="">
+        <!-- <h3>base.html</h3> -->
+        <br>
+<h3>Votre export a bien été effectué</h3>
+<br>
+<a href="http://logitud/index/participants">Retour aux participants</a>
+<br>
+<a href="http://logitud/index/epreuves">Retour aux épreuves</a>
+<br>
+<a href="http://logitud/">Retour au menu</a>
+</body>
+</html>
