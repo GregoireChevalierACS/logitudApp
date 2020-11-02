@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Participant;
+use \PDO;
 
 class DataBaseInteraction extends DataBaseHandle{ 
 
@@ -11,7 +11,7 @@ class DataBaseInteraction extends DataBaseHandle{
         $sql = "SELECT * FROM epreuves";
         $declaration = $this->connecte()->query($sql);
         $one = $declaration->fetchAll();
-        //dump($one)  ; 2
+        //dump($one)  ; 
         return $one;
     }
 
@@ -61,27 +61,13 @@ class DataBaseInteraction extends DataBaseHandle{
         // LINES TERMINATED BY '\n'";
         $sql = "SELECT * FROM participants";
         $declaration = $this->connecte()->query($sql);
-        $three = $declaration->fetchAll();
+        $participant = $declaration->fetchAll(PDO::FETCH_ASSOC);
         $exportCible = 'participants';
-        // $field = mysqli_num_fields($three);
         $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
         $exportCSV = '';
        
-        // dump($field);
-        // die();
-
-        // for($i = 0; $i < $three; $i++) {
-        //     $exportCSV.= $three[$i['prenom']] . ' - ' . $three[$i['nom']] . '\n';
-        //   }
-        
-        for ($i=0; $i < count($three); $i++) { 
-            dump($three[$i]);
-        }
-
-        //echo($exportCSV);
-        dump($three);
+        dump($participant);
         die();
-        // $exportCSV = '';
         
     }
 }
