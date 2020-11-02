@@ -62,9 +62,10 @@ class DataBaseInteraction extends DataBaseHandle{
         $sql = "SELECT * FROM participants";
         $declaration = $this->connecte()->query($sql);
         $participant = $declaration->fetchAll(PDO::FETCH_ASSOC);
-        $exportCible = 'participants';
-        $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
-        $exportCSV = '';
+
+        $exportCible = 'participants_';
+        $nomCSV = 'export_'.date('Y-m-d').'.csv';
+        $exportCSV = '' . $exportCible . $nomCSV;
         
         $nomChamps = array();
 
@@ -75,8 +76,20 @@ class DataBaseInteraction extends DataBaseHandle{
             }
         }
 
-        dump($nomChamps[1]);
-        die();
+        header('Content-Type: application/excel');
+        header('Content-Disposition: attachment; filename="' . $exportCSV . '"');
+
+        $fp = fopen('php://output', 'w');
+        fputcsv($fp, $nomChamps);
+
+        foreach ($participant as $row) {
+            fputcsv($fp, $row);
+        }
+
+        fclose($fp);
+
+        // dump($nomChamps[1]);
+        // die();
         
     }
 }
