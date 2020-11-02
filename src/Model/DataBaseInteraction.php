@@ -65,8 +65,17 @@ class DataBaseInteraction extends DataBaseHandle{
         $exportCible = 'participants';
         $nomCSV = 'db_export_'.date('Y-m-d').'.csv';
         $exportCSV = '';
-       
-        dump($participant);
+        
+        $nomChamps = array();
+
+        if(!empty($participant)){
+            $nomParticipant = $participant[0];
+            foreach($nomParticipant as $nomChmp => $val){
+                $nomChamps[] = $nomChmp;
+            }
+        }
+
+        dump($nomChamps[1]);
         die();
         
     }
