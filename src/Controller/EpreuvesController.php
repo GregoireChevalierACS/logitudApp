@@ -97,8 +97,6 @@ class EpreuvesController{
 
     public function recupInfos(Request $request){//appel de l'objet instancié, nommage en request
 
-        //echo("<br>"."EpreuvesController.php"."<br>");
-        //echo("<br>"."recupInfos appelée"."<br>");
         //dump($request->query);
         //$lieu = $request->query->get('lieu');
         //$date = $request->query->get('date');
@@ -111,9 +109,7 @@ class EpreuvesController{
         $epreuve = $interaction->getEpreuves();
         
         // foreach($epreuve as $arr) foreach($arr as $k=>$v) $arrayIndex[$k][] = $v; VERSION PLUS PROPRE DE çA CI-DESSOUS
-        // dump($arrayIndex);
         // $val = array_search($id, $arrayIndex['id']);
-        // dump($val);
         $val = array_column($epreuve, null, 'id');
         //dump($val[$id]);
 

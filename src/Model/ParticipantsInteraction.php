@@ -7,7 +7,6 @@ use \PDO;
 class ParticipantsInteraction extends DataBaseHandle{ 
 
     public function setParticipants($prenom, $nom, $dateNaissance, $categorie, $profil){
-        //echo("setParticipants() appelée" . "<br>");
         $sql = "INSERT INTO participants(prenom, nom, dateNaissance, categorie, profil) VALUES (?,?,?,?,?)";
         $declaration = $this->connecte()->prepare($sql);
         $declaration->execute([$prenom, $nom, $dateNaissance, $categorie, $profil]);

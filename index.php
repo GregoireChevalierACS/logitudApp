@@ -7,7 +7,6 @@ use App\Controller\EpreuvesController;
 use App\Controller\ParticipantsController;
 use Symfony\Component\HttpFoundation\Request;
 
-
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', [new AccueilController(), 'fonction1']);
     $r->addRoute('GET', '/index/epreuves', [new EpreuvesController(), 'listeEpreuves']);
